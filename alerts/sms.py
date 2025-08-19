@@ -6,6 +6,13 @@ from itertools import combinations
 EMAIL = os.getenv("EMAIL")
 PASSWORD = os.getenv("PASSWORD")
 RECIPIENT = os.getenv("RECIPIENT")
+API_USERNAME = os.getenv("API_USERNAME")
+API_PASSWORD = os.getenv("API_PASSWORD")
+
+headers = {
+    "X-API-USERNAME": API_USERNAME,
+    "X-API-PASSWORD": API_PASSWORD,
+}
 
 API_URL = "https://api.x-eh.com/extapi3/"
 BAR_TO_PSI = 14.5038
@@ -23,7 +30,7 @@ def send_message(message):
 def get_tire_data():
     """Returns car_name and tire pressures in psi."""
     try:
-        response = requests.get(API_URL)
+        response = requests.get(API_URL, headers=headers)
         response.raise_for_status()
         data = response.json()
 
