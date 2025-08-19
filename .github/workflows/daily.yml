@@ -18,4 +18,4 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
           RECIPIENT: ${{ secrets.RECIPIENT }}
         run: |
-          python /alerts/sms.py
+          python alerts/sms.py
