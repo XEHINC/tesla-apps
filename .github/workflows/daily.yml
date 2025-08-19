@@ -17,5 +17,7 @@ jobs:
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
           RECIPIENT: ${{ secrets.RECIPIENT }}
+          API_USERNAME: ${{ secrets.API_USERNAME }}
+          API_PASSWORD: ${{ secrets.API_PASSWORD }}
         run: |
           python alerts/sms.py
