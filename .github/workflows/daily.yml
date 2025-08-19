@@ -1,0 +1,18 @@
+name: Daily Script
+
+on:
+  schedule:
+    # Runs every day at midnight UTC
+    - cron: "0 0 * * *"
+  workflow_dispatch: # optional, lets you run it manually too
+
+jobs:
+  run-daily:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4  # pull your repo
+
+      - name: Run my script
+        run: |
+          python my_script.py
