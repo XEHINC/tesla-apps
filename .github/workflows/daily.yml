@@ -2,17 +2,20 @@ name: Daily Script
 
 on:
   schedule:
-    # Runs every day at midnight UTC
-    - cron: "0 0 * * *"
-  workflow_dispatch: # optional, lets you run it manually too
+    - cron: "0 0 * * *"  # daily at midnight UTC
+  workflow_dispatch:
 
 jobs:
   run-daily:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4  # pull your repo
+      - uses: actions/checkout@v4
 
       - name: Run my script
+        env:   # expose secrets to the script as environment variables
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          RECIPIENT: ${{ secrets.RECIPIENT }}
         run: |
-          python my_script.py
+          python /alerts/sms.py
