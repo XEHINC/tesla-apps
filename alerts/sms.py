@@ -1,6 +1,7 @@
 import smtplib
 import requests
 import os
+from requests.auth import HTTPBasicAuth
 from itertools import combinations
 
 EMAIL = os.getenv("EMAIL")
