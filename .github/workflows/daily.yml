@@ -16,8 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install Python 3.9 via apt-get
-        run: sudo apt-get update && sudo apt-get install -y python3.9 python3.9-venv
+      - name: Install Python 3.9
+
 
       - name: Install dependencies
         run: |
