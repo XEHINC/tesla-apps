@@ -14,20 +14,20 @@ API_URL = "https://api.x-eh.com/extapi3/"
 TOKEN_REFRESH_URL = "https://api.x-eh.com/api/token/refresh/" # Assuming this is the correct URL
 BAR_TO_PSI = 14.5038
 
-def get_new_access_token():
-    try:
-        # Send the refresh token to the token refresh endpoint
-        response = requests.post(TOKEN_REFRESH_URL, json={'refresh': REFRESH_TOKEN})
-        response.raise_for_status()
-        new_tokens = response.json()
+# def get_new_access_token():
+#     try:
+#         # Send the refresh token to the token refresh endpoint
+#         response = requests.post(TOKEN_REFRESH_URL, json={'refresh': REFRESH_TOKEN})
+#         response.raise_for_status()
+#         new_tokens = response.json()
         
-        # In a real-world scenario, you'd need to update the GitHub Secret.
-        # This is not possible directly from a GitHub Action.
-        # For simplicity in this script, we'll just return the new token.
-        return new_tokens.get('access')
-    except Exception as e:
-        print(f"Failed to refresh token: {e}")
-        return None
+#         # In a real-world scenario, you'd need to update the GitHub Secret.
+#         # This is not possible directly from a GitHub Action.
+#         # For simplicity in this script, we'll just return the new token.
+#         return new_tokens.get('access')
+#     except Exception as e:
+#         print(f"Failed to refresh token: {e}")
+#         return None
 
 def get_tire_data():
     """Returns car_name and tire pressures in psi."""
