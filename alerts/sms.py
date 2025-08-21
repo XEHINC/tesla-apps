@@ -11,7 +11,7 @@ AUTH_USERNAME = os.getenv("BASIC_AUTH_USERNAME")
 AUTH_PASSWORD = os.getenv("BASIC_AUTH_PASSWORD")
 
 # Constants
-API_URL = "https://api.x-eh.com/extapi3/"
+API_URL = "https://api.x-eh.com/extapi2"
 BAR_TO_PSI = 14.5038
 
 def get_tire_data():
