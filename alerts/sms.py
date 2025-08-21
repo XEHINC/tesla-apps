@@ -9,6 +9,8 @@ PASSWORD = os.getenv("PASSWORD")
 RECIPIENT = os.getenv("RECIPIENT")
 API_USERNAME = os.getenv("API_USERNAME")
 API_PASSWORD = os.getenv("API_PASSWORD")
+ACCESS_TOKEN = os.getenv("API_ACCESS_TOKEN")
+REFRESH_TOKEN = os.getenv("API_REFRESH_TOKEN")
 
 API_URL = "https://api.x-eh.com/extapi3/"
 BAR_TO_PSI = 14.5038
