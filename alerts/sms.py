@@ -19,13 +19,6 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
 
-try:
-    response = requests.get(API_URL, headers=headers)
-    response.raise_for_status() # Raises an HTTPError for bad responses (4xx or 5xx)
-    print("Request successful!")
-    print(response.text)
-except requests.exceptions.RequestException as e:
-    print(f"An error occurred: {e}")
 
 def send_message(message):
     try:
@@ -40,8 +33,10 @@ def send_message(message):
 def get_tire_data():
     """Returns car_name and tire pressures in psi."""
     try:
-        response = requests.get(API_URL, auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD))
+        response = requests.get(API_URL, auth=HTTPBasicAuth(API_USERNAME, API_PASSWORD), headers=headers)
         response.raise_for_status()
+        print("Request successful!")
+        print(response.text)
         data = response.json()
 
         car_name = data["data"]["car"]["car_name"]
