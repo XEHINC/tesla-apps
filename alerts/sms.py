@@ -3,7 +3,7 @@ import requests
 import os
 from itertools import combinations
 
-# Retrieve environment variables for Basic Auth and email
+# Retrieve environment variables
 EMAIL = os.getenv("EMAIL")
 PASSWORD = os.getenv("PASSWORD")
 RECIPIENT = os.getenv("RECIPIENT")
@@ -17,10 +17,15 @@ BAR_TO_PSI = 14.5038
 def get_tire_data():
     """Fetches car name and tire pressures in psi using Basic Auth."""
     
-    # Use the 'auth' parameter for Basic Auth
+    # Define a user-agent header to mimic a browser request
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+
     try:
-        response = requests.get(API_URL, auth=(AUTH_USERNAME, AUTH_PASSWORD))
-        response.raise_for_status()  # Raises an HTTPError for bad responses (4xx or 5xx)
+        # Pass the auth and headers to the requests.get() call
+        response = requests.get(API_URL, auth=(AUTH_USERNAME, AUTH_PASSWORD), headers=headers)
+        response.raise_for_status()  # This will raise an HTTPError for bad responses
         print("Request successful!")
         data = response.json()
         
@@ -44,6 +49,7 @@ def get_tire_data():
 
 def send_message(message):
     """Sends an email message."""
+    # (Email sending logic remains the same)
     try:
         with smtplib.SMTP("smtp.gmail.com", 587) as server:
             server.starttls()
@@ -77,9 +83,9 @@ if __name__ == "__main__":
             + " / ".join([f"{tire}: {psi:.1f}" for tire, psi in pressures.items()])
         )
         print(message)
-        # send_message(message)
+        send_message(message)
 
         alert = check_pressure_difference(car_name, pressures)
         if alert:
             print(alert)
-            # send_message(alert)
+            send_message(alert)
