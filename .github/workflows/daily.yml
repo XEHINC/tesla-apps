@@ -22,5 +22,7 @@ jobs:
           RECIPIENT: ${{ secrets.RECIPIENT }}
           API_USERNAME: ${{ secrets.API_USERNAME }}
           API_PASSWORD: ${{ secrets.API_PASSWORD }}
+          API_ACCESS_TOKEN: ${{ secrets.API_ACCESS_TOKEN }}
+          API_REFRESH_TOKEN: ${{ secrets.API_REFRESH_TOKEN }}
         run: |
           python alerts/sms.py
