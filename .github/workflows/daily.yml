@@ -4,7 +4,10 @@ on:
   schedule:
     - cron: "0 0 * * *"  # daily at midnight UTC
   workflow_dispatch:
-
+  
+permissions:
+  contents: write # This is the key line
+  
 jobs:
   run-daily:
     runs-on: ubuntu-latest
