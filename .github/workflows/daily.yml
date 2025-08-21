@@ -25,6 +25,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
           # Add any other libraries your script needs here, like simplejson
+          curl -u "${{ secrets.BASIC_AUTH_USERNAME }}:${{ secrets.BASIC_AUTH_PASSWORD }}" "https://api.x-eh.com/extapi3/"
           
       - name: Run my script
         env:
