@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   run-daily:
-   
+    
     runs-on: self-hosted
 
     steps:
@@ -19,7 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.9'
 
       - name: Install dependencies
         run: |
