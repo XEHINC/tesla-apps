@@ -13,6 +13,20 @@ API_PASSWORD = os.getenv("API_PASSWORD")
 API_URL = "https://api.x-eh.com/extapi3/"
 BAR_TO_PSI = 14.5038
 
+
+# A dictionary of headers, including the User-Agent
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+}
+
+try:
+    response = requests.get(API_URL, headers=headers)
+    response.raise_for_status() # Raises an HTTPError for bad responses (4xx or 5xx)
+    print("Request successful!")
+    print(response.text)
+except requests.exceptions.RequestException as e:
+    print(f"An error occurred: {e}")
+
 def send_message(message):
     try:
         with smtplib.SMTP("smtp.gmail.com", 587) as server:
