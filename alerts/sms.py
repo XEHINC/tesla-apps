@@ -73,7 +73,7 @@ def check_pressure_difference(car_name, pressures):
     alerts = []
     for (tire1, psi1), (tire2, psi2) in combinations(pressures.items(), 2):
         diff = abs(psi1 - psi2)
-        if diff > 2:
+        if diff > 1:
             alerts.append(f"{tire1} vs {tire2} ({diff:.1f} psi difference)")
 
     if alerts:
