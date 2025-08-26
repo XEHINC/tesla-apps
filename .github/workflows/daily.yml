@@ -21,7 +21,7 @@ jobs:
         env:
           EMAIL: ${{ secrets.EMAIL1 }}
           PASSWORD: ${{ secrets.PASSWORD1 }}
-          RECIPIENT: ${{ secrets.RECIPIENT1 }}
+          RECIPIENTS: ${{ secrets.RECIPIENTS }}
           BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
           BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
         run: |
