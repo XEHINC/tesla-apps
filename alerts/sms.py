@@ -5,8 +5,8 @@ from itertools import combinations
 import json
 
 # Retrieve environment variables
-EMAIL = os.getenv("EMAIL")
-PASSWORD = os.getenv("PASSWORD")
+EMAIL = os.getenv("EMAIL1")
+PASSWORD = os.getenv("PASSWORD1")
 RECIPIENT = os.getenv("RECIPIENT")
 AUTH_USERNAME = os.getenv("BASIC_AUTH_USERNAME")
 AUTH_PASSWORD = os.getenv("BASIC_AUTH_PASSWORD")
@@ -60,8 +60,8 @@ def send_message(subject, body):
     try:
         with smtplib.SMTP("smtp.gmail.com", 587) as server:
             server.starttls()
-            server.login(EMAIL, PASSWORD)
-            server.sendmail(EMAIL, RECIPIENT, message)
+            server.login(EMAIL1, PASSWORD1)
+            server.sendmail(EMAIL1, RECIPIENT, message)
         print("Message sent successfully!")
     except Exception as e:
         print(f"Error sending message: {e}")
