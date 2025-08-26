@@ -19,8 +19,8 @@ jobs:
       
       - name: Run my script
         env:
-          EMAIL: ${{ secrets.EMAIL }}
-          PASSWORD: ${{ secrets.PASSWORD }}
+          EMAIL: ${{ secrets.EMAIL1 }}
+          PASSWORD: ${{ secrets.PASSWORD1 }}
           RECIPIENT: ${{ secrets.RECIPIENT }}
           BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
           BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
