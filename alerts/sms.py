@@ -3,6 +3,7 @@ import requests
 import os
 from itertools import combinations
 import json
+import time
 
 # Retrieve environment variables
 EMAIL = os.getenv("EMAIL")
@@ -105,6 +106,9 @@ def main():
                 print(alert)
                 send_message(f"Tire Pressure ALERT: {car_name}", alert)
         print("-" * 40)
+        # Add a delay here to prevent throttling.
+        # A 60-second delay is a good starting point.
+        time.sleep(60)
 
 if __name__ == "__main__":
     main()
