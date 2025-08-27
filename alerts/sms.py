@@ -4,6 +4,7 @@ import os
 from itertools import combinations
 import json
 import time
+from datetime import datetime
 
 # Retrieve environment variables
 EMAIL = os.getenv("EMAIL")
@@ -56,8 +57,11 @@ def get_tire_data(api_url):
 def send_message(subject, body):
     """
     Sends an email message with a given subject and body.
+    Includes the current timestamp in the message body.
     """
-    message = f"Subject: {subject}\n\n{body}"
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    full_body = f"Timestamp: {timestamp}\n\n{body}"
+    message = f"Subject: {subject}\n\n{full_body}"
     try:
         with smtplib.SMTP("smtp.gmail.com", 587) as server:
             server.starttls()
