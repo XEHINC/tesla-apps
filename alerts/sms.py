@@ -4,7 +4,7 @@ import os
 from itertools import combinations
 import json
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Retrieve environment variables
 EMAIL = os.getenv("EMAIL")
@@ -57,9 +57,9 @@ def get_tire_data(api_url):
 def send_message(subject, body):
     """
     Sends an email message with a given subject and body.
-    Includes the current timestamp in the message body.
+    Includes the current timestamp in the message body, with UTC timezone.
     """
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S %Z")
     full_body = f"Timestamp: {timestamp}\n\n{body}"
     message = f"Subject: {subject}\n\n{full_body}"
     try:
