@@ -99,16 +99,16 @@ def main():
 
         if pressures:
             message_body = (
-                f"{car_name} Tire Pressure (psi):\n"
+                f"{car_name}:"
                 + " / ".join([f"{tire}: {psi:.1f}" for tire, psi in pressures.items()])
             )
             print(message_body)
-            send_message(f"Tire Pressure Report: {car_name}", message_body)
+            send_message(f": {car_name}", message_body)
 
             alert = check_pressure_difference(car_name, pressures)
             if alert:
                 print(alert)
-                send_message(f"Tire Pressure ALERT: {car_name}", alert)
+                send_message(f"ALERT: {car_name}", alert)
         print("-" * 40)
         # Add a delay here to prevent throttling.
         # A 60-second delay is a good starting point.
